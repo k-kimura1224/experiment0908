@@ -9,6 +9,8 @@ generate(){
    echo "read $file" >> $txtname
    echo "opt"
    echo "opt" >> $txtname
+   echo "write ${name}.sol"
+   echo "write ${name}.sol" >> $txtname
 }
 
 time=10000
