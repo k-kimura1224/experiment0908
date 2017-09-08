@@ -10,22 +10,24 @@ generate(){
 
 k=30
 
-#for file in `ls ../data/*.data`
-for file in `ls ../../../data_scip/*.linereg`
+for file in `ls ../data/*.linereg`
 do
    generate $file $k
    echo "generate lp-file from ${file}"
 done
 
+k=20
 
-#generate housing
-#generate servo
-#generate auto-mpg
-#generate automobile
-#generate breastcancer
-#generate crime
-#generate forestfires
-#generate solarflareC
-#generate solarflareX
-#generate solarflareM
+for file in `ls ../data/*.linereg`
+do
+   generate $file $k
+   echo "generate lp-file from ${file}"
+done
 
+k=10
+
+for file in `ls ../data/*.linereg`
+do
+   generate $file $k
+   echo "generate lp-file from ${file}"
+done
