@@ -1,6 +1,5 @@
 bin
 obj
-/LPfile_MIQP
 *.lp
 *.log
 *.sol
