@@ -10,7 +10,7 @@ generate(){
 
 k=30
 
-for file in `ls ../data/*.linereg`
+for file in `ls ../../data/*.linereg`
 do
    generate $file $k
    echo "generate lp-file from ${file}"
@@ -18,7 +18,7 @@ done
 
 k=20
 
-for file in `ls ../data/*.linereg`
+for file in `ls ../../data/*.linereg`
 do
    generate $file $k
    echo "generate lp-file from ${file}"
@@ -26,7 +26,7 @@ done
 
 k=10
 
-for file in `ls ../data/*.linereg`
+for file in `ls ../../data/*.linereg`
 do
    generate $file $k
    echo "generate lp-file from ${file}"
