@@ -13,7 +13,7 @@ generate(){
    echo "write ${name}.sol" >> $txtname
 }
 
-time=10000
+time=5000
 txtname=run.txt
 
 rm -f $txtname
