@@ -1,0 +1,28 @@
+set mip strategy miqcpstrat 1
+set timelimit 10000
+
+read housing
+opt
+write housing.sol
+
+read servo
+opt
+write servo.sol
+
+read auto-mpg
+opt
+write auto-mpg.sol
+
+read solarflareC
+opt
+write solarflareC.sol
+
+read solarflareM
+opt
+write solarflareM.sol
+
+read solarflareX
+opt
+write solarflareX.sol
+q
+

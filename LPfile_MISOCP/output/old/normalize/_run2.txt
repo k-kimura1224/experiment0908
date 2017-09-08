@@ -1,0 +1,12 @@
+set mip strategy miqcpstrat 1
+set timelimit 10000
+
+read breastcancer
+opt
+write breastcancer.sol
+
+read forestfires
+opt
+write forestfires.sol
+
+q

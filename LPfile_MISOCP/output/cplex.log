@@ -1,0 +1,66 @@
+
+Log started (V12.6.2.0) Thu Sep  7 17:06:28 2017
+
+File 'spiked_1mg' not found.
+No file read.
+
+Problem 'spiked_1mg_30.lp' read.
+Read time = 0.92 sec. (64.50 ticks)
+Tried aggregator 2 times.
+MIQCP Presolve eliminated 0 rows and 42347 columns.
+MIQCP Presolve modified 31 coefficients.
+Aggregator did 99 substitutions.
+Reduced MIQCP has 104 rows, 127363 columns, and 4185846 nonzeros.
+Reduced MIQCP has 42408 binaries, 1 generals, 0 SOSs, and 42377 indicators.
+Reduced MIQCP has 42378 quadratic constraints.
+Presolve time = 2.35 sec. (1403.99 ticks)
+Probing time = 0.22 sec. (165.08 ticks)
+Clique table members: 42378.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 4 threads.
+Root relaxation solution time = 0.43 sec. (293.21 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0        0.0000     0                      0.0000        0         
+      0     0        0.0000     0                     Cone: 1        1         
+      0     0        0.0000     1                     Cone: 2        2         
+      0     0        0.0000     2                     Cone: 3        3         
+      0     0        0.0000     3                     Cone: 4        4         
+      0     0        0.0000     4                     Cone: 5        5         
+      0     0        0.0000     5                     Cone: 6        6         
+      0     0        0.0000     6                     Cone: 8        8         
+      0     0        0.0000     7                   Cone: 106       84         
+      0     0        0.0000    69                   Cone: 199      226         
+      0     0        0.0000    98                   Cone: 234      311         
+      0     0        0.0000    98                   Cone: 245      353         
+      0     0        0.0000    98                   Cone: 262      401         
+      0     0        0.0000    98                   Cone: 271      455         
+      0     0        0.0000    98                   Cone: 285      525         
+      0     0        0.0000    98                   Cone: 297      691         
+      0     0        0.0000    98                   Cone: 315      808         
+      0     0        0.0000    98                   Cone: 322      901         
+      0     0        0.0000    98                   Cone: 329     1089         
+      0     0        0.0000    98                   Cone: 335     1141         
+      0     0        0.0000    98                   Cone: 343     1246         
+      0     0        0.0000    98                   Cone: 350     1377         
+      0     0        0.0000    98                   Cone: 355     1530         
+      0     0        0.0000    33                      0.0000     1540         
+
+Root node processing (before b&c):
+  Real time             =   68.71 sec. (59234.20 ticks)
+Parallel b&c, 4 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =   68.71 sec. (59234.20 ticks)
+
+
+MIP - Aborted, no integer solution.
+Current MIP best bound =  8.5502220647e-13 (gap is infinite)
+Solution time =   68.71 sec.  Iterations = 1557  Nodes = 0 (1)
+Deterministic time = 59234.56 ticks  (862.06 ticks/sec)
+

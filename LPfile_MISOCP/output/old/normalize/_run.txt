@@ -1,0 +1,46 @@
+set mip strategy miqcpstrat 1
+set timelimit 5000
+set mip tolerances integrality 0
+
+read housing
+opt
+write housing.sol
+
+read servo
+opt
+write servo.sol
+
+read auto-mpg
+opt
+write auto-mpg.sol
+
+read solarflareC
+opt
+write solarflareC.sol
+
+read solarflareM
+opt
+write solarflareM.sol
+
+read solarflareX
+opt
+write solarflareX.sol
+
+read breastcancer
+opt
+write breastcancer.sol
+
+read forestfires
+opt
+write forestfires.sol
+
+read automobile
+opt
+write automobile.sol
+
+read crime
+opt
+write crime.sol
+
+q
+
