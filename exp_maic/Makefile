@@ -21,7 +21,7 @@
 # paths
 #-----------------------------------------------------------------------------
 
-SCIPDIR         =       ../..
+SCIPDIR         =       ../../../git_zib/scip
 
 
 #-----------------------------------------------------------------------------
@@ -65,7 +65,7 @@ USRDIR		= $(PWD)
 USRLDFLAGS= -llapack -lblas
 # Link of BLAS and LAPACK for Waki
 #USRLDFLAGS= /home/waki9/lib/xianyi-OpenBLAS-aceee4e/libopenblas.a -lpthread
-USRLDFLAGS= /usr/lib64/libopenblas.so -lpthread
+#USRLDFLAGS= /usr/lib64/libopenblas.so -lpthread
 #-----------------------------------------------------------------------------
 # Rules
 #-----------------------------------------------------------------------------

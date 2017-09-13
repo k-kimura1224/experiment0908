@@ -212,46 +212,32 @@ SCIP_RETCODE checkData(
    int                   n,                  /**< the number of data points */
    int                   p,                  /**< the number of explanatory varaibles */
    int                   i_ex,               /**< index of explained varaible */
-   SCIP_Real*            data,               /**< data points */
-   int*                  check               /**< array to return reslut */
+   SCIP_Real*            data                /**< data points */
    )
 {
    int i;
-   int j;
+   int buf;
+   int p1;
 
    assert(n > 0);
    assert(p > 0);
    assert(data != NULL);
    assert(i_ex > 0 && i_ex <= p + 1);
 
-   for( i = 0; i < p + 1; i++ )
+   buf = i_ex - 1;
+   p1 = p + 1;
+
+   for( i = 1; i < n; i++ )
    {
-      check[i] = 1;
-      for( j = 1; j < n; j++ )
-      {
-         if( !EPSEQ(data[i+(j*(p+1))], data[i+((j-1)*(p+1))], 1e-06) )
+      if( !EPSEQ(data[buf + i * p1], data[buf + (i-1) * p1], 1e-06) )
             break;
-
-         if( j == n -1 )
-            check[i] = 0;
-      }
-
-      if( check[i] == 0 )
-      {
-         SCIPerrorMessage("error in checkData\n");
-         assert(0);
-         return SCIP_ERROR;
-      }
    }
 
-   /*
-   if( check[i_ex - 1] == 0 )
+   if( i == n )
    {
       SCIPerrorMessage("error in checkData\n");
-      assert(0);
       return SCIP_ERROR;
    }
-   */
 
    return SCIP_OKAY;
 }
@@ -353,8 +339,10 @@ SCIP_RETCODE normalization(
    {
       for( j = 0; j < p + 1; j++ )
       {
-         assert(!EPSEQ(variance[j], 0.0, 1e-06));
-         *(data + (i * (p + 1)) + j) = (*(data + (i * ( p + 1)) + j) - mean[j]) / sqrt(variance[j]);
+         if( !EPSEQ(variance[j], 0.0, 1e-06 ) )
+         {
+            *(data + (i * (p + 1)) + j) = (*(data + (i * ( p + 1)) + j) - mean[j]) / sqrt(variance[j]);
+         }
       }
    }
 
@@ -818,14 +806,19 @@ SCIP_RETCODE createVariables(
    )
 {
    int i;
+   int j;
+   int in;
    int n;
    int p;
    SCIP_Real para_regterm;
    char varname[SCIP_MAXSTRLEN];
+   SCIP_Real* data_x;
+   SCIP_Bool check;
 
    n = probdata->n;
    p = probdata->p;
    para_regterm = probdata->para_regterm;
+   data_x = probdata->x;
 
    assert(scip != NULL);
    assert(probdata != NULL);
@@ -847,9 +840,28 @@ SCIP_RETCODE createVariables(
       (void) SCIPsnprintf(varname, SCIP_MAXSTRLEN, "a%d", i+1);
       SCIP_CALL( SCIPcreateVarBasic( scip, &probdata->a[i], varname, - SCIPinfinity(scip), SCIPinfinity(scip), 0.0, SCIP_VARTYPE_CONTINUOUS));
 
+      /* check data */
+      check = TRUE;
+      in = i * n;
+      for( j = 1; j < n; j++ )
+      {
+         if( !EPSEQ(data_x[in + j], data_x[in + (j-1)], 1e-06) )
+            break;
+      }
+
+      if( j == n )
+         check = FALSE;
+
       /* create binary variables z_i */
       (void) SCIPsnprintf(varname, SCIP_MAXSTRLEN, "z%d", i+1);
-      SCIP_CALL( SCIPcreateVarBasic( scip, &probdata->z[i], varname, 0.0, 1.0, para_regterm, SCIP_VARTYPE_BINARY));
+      if( check == TRUE )
+      {
+         SCIP_CALL( SCIPcreateVarBasic( scip, &probdata->z[i], varname, 0.0, 1.0, para_regterm, SCIP_VARTYPE_BINARY));
+      }
+      else
+      {
+         SCIP_CALL( SCIPcreateVarBasic( scip, &probdata->z[i], varname, 0.0, 0.0, para_regterm, SCIP_VARTYPE_BINARY));
+      }
    }
 
    for( i = 0; i < n; i++ )
@@ -1219,7 +1231,6 @@ SCIP_RETCODE SCIPprobdataCreate(
    int i;
    int j;
    int ct;
-   int* check;
    char probname[SCIP_MAXSTRLEN];
    int np;
    int pp;
@@ -1254,8 +1265,7 @@ SCIP_RETCODE SCIPprobdataCreate(
    SCIP_CALL( readData(filename, n, p, data));
 
    /* check data */
-   SCIP_CALL( SCIPallocMemoryArray(scip, &check, p + 1));
-   SCIP_CALL( checkData(n, p, i_ex, data, check));
+   SCIP_CALL( checkData(n, p, i_ex, data));
 
    /* normalize data */
    SCIP_CALL( normalization(scip, n, p, data));
@@ -1454,9 +1464,6 @@ SCIP_RETCODE SCIPprobdataCreate(
 
    /* create and add constraints */
    SCIP_CALL( createConstraints(scip, probdata));
-
-   /* free */
-   SCIPfreeMemoryArrayNull( scip, &check);
 
    return SCIP_OKAY;
 }

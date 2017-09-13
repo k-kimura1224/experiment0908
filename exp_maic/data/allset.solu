@@ -1,0 +1,13 @@
+=opt= housing                  2488.87282
+=opt= servo                    637.126896
+=opt= auto-mpg                 1559.16787
+=opt= solarflareC              7220.90989
+=opt= solarflareM               7331.5187
+=opt= solarflareX              7287.42458
+=opt= breastcancer             977.820674
+=best= forestfires              3190.69452
+=bestdual= forestfires              3165.32834
+=best= automobile               292.041157
+=bestdual= automobile               254.244349
+=best= crime                     12893.973
+=bestdual= crime                    12821.5272
