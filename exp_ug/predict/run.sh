@@ -1,5 +1,4 @@
-#/bin/sh
-#chmod u+x gen.sh
+#!/bin/sh
 
 ug()
 {
@@ -13,7 +12,7 @@ ug()
    ../bin/fscip ../settings/exp10.set $file -q -sth $sth
    #../bin/fscip ../settings/exp20.set $file -q -sth $sth
    #../bin/fscip ../settings/exp30.set $file -q -sth $sth
-   mv ${filename}* $dirname/$subdirname
+   mv ${filename}* ${dirname}/${subdirname}
 }
 
 subrun()
@@ -23,7 +22,7 @@ subrun()
    dirname=$3
    subdirname=${1##*/}
 
-   mkdir $dirname/$subdirname
+   mkdir ${dirname}/${subdirname}
 
    for file in `ls ${subdir}/*_sample*.linereg`
    do
@@ -37,14 +36,13 @@ run()
    sth=$2
    dirname=${1##*/}
 
-   rm -rf $dirname
-   mkdir $dirname
+   rm -rf ${dirname}
+   mkdir ${dirname}
 
-   for subdir in `ls -d $dir/*`
+   for subdir in `ls -d ${dir}/*`
    do
-      subrun $subdir $sth $dirname
+      subrun ${subdir} ${sth} ${dirname}
    done
-
 }
 
 datadir=$1
