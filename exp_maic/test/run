@@ -1,0 +1,26 @@
+#!/bin/sh
+#chmod u+x run.sh 
+run()
+{
+	opt=$1
+	test=$2
+	time=$3
+	settings=$4
+
+	make OPT=${opt} LPS=none PARASCIP=true ZIMPL=false MAXJOBS=10 TEST=${test} TIME=${time} SETTINGS=${settings} test
+}
+
+TIME=300
+
+run dbg allset ${TIME} test1
+run dbg allset ${TIME} test2
+run dbg allset ${TIME} test3
+run dbg allset ${TIME} test4
+
+run opt allset ${TIME} test1
+run opt allset ${TIME} test2
+run opt allset ${TIME} test3
+run opt allset ${TIME} test4
+
+run dbg testcrime ${TIME} test5
+run opt testcrime ${TIME} test5

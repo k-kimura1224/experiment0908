@@ -1,0 +1,17 @@
+set timelimit 5000
+read ../output/spiked_40mg_20.lp
+opt
+write spiked_40mg_20.sol
+read ../output/spiked_40mg_30.lp
+opt
+write spiked_40mg_30.sol
+read ../output/spiked_80mg_10.lp
+opt
+write spiked_80mg_10.sol
+read ../output/spiked_80mg_20.lp
+opt
+write spiked_80mg_20.sol
+read ../output/spiked_80mg_30.lp
+opt
+write spiked_80mg_30.sol
+q
