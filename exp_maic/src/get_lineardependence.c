@@ -339,10 +339,9 @@ SCIP_RETCODE SCIPgetLineDependSet(
          SCIP_CALL( SCIPsortBubble(scip, rank, vector_x, sort, num));
 
          /* check whether elements are 0 */
-         assert( !EPSEQ(sort[0], 0.0, ep) );
          for( j = 0; j < rank - 1; j++ )
          {
-            if( EPSEQ(sort[j+1], 0.0, ep) )
+            if( EPSEQ(sort[j], 0.0, ep) )
                break;
          }
 

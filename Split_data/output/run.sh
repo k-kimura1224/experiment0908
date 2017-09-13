@@ -1,4 +1,4 @@
-#/bin/sh
+#!/bin/sh
 #chmod u+x gen.sh
 generate(){
    file=$1
@@ -13,7 +13,7 @@ generate(){
 	for i in `seq 0 $r`
    do
       mkdir $name/$i
-      ../bin/split/ $file $k $samplename $predictname
+      ../bin/split $file $k $samplename $predictname
       mv *.linereg $name/$i
    done
 }
