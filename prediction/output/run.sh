@@ -13,7 +13,7 @@ pred()
    #buf=${1##*/}
    #filename=${buf%.*}
 
-   echo "../bin/prediction ${subdir}/${samplefile} ${subdir}/${predictfile} ../aaaa/${dirname}/${subdirname}/${solfile} $outputfile"
+   ../bin/prediction ${subdir}/${samplefile} ${subdir}/${predictfile} ${subdir}/${solfile} $outputfile
    mv $outputfile ${dirname}/${subdirname}
 }
 
