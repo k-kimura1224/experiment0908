@@ -364,7 +364,13 @@ SCIP_RETCODE writePred(
 
    printf("\noutput: %s\n", outputfile);
    file = fopen(outputfile, "w");
-   fprintf(file, "%d %d %d %d %f %f", TP, FP, FN, TN, Sensitivity, Specificity);
+   //fprintf(file, "%d %d %d %d %f %f", TP, FP, FN, TN, Sensitivity, Specificity);
+   fprintf(file, "TP:\n%d\n", TP);
+   fprintf(file, "FP:\n%d\n", FP);
+   fprintf(file, "FN:\n%d\n", FN);
+   fprintf(file, "TN:\n%d\n", TN);
+   fprintf(file, "Sensitivity:\n%f\n", Sensitivity);
+   fprintf(file, "Specificity:\n%f\n", Specificity);
    fclose(file);
 
    return SCIP_OKAY;
