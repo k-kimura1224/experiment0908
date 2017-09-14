@@ -515,7 +515,7 @@ SCIP_RETCODE run(
             if( sum < 0.0 )
                TP++;
             else
-               FP++;
+               FN++;
          }
          else
          {
@@ -524,7 +524,7 @@ SCIP_RETCODE run(
             if( sum > 0.0 )
                TN++;
             else
-               FN++;
+               FP++;
          }
       }
 
