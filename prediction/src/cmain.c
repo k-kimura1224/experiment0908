@@ -538,8 +538,15 @@ SCIP_RETCODE run(
       printf("TP:\t%d\tFP:\t%d\n", TP, FP);
       printf("FN:\t%d\tTN:\t%d\n", FN, TN);
 
-      Sensitivity = (double)TP/(TP+FN);
-      Specificity = (double)TN/(FP+TN);
+		if( TP + FN == 0 )
+			Sensitivity = 1.0;
+		else
+      	Sensitivity = (double)TP/(TP+FN);
+
+		if( FP + TN  == 0 )
+			Specificity = 1.0;
+		else
+      	Specificity = (double)TN/(FP+TN);
 
       printf("\n");
       printf("Sensitivity:\t%f\n", Sensitivity);
