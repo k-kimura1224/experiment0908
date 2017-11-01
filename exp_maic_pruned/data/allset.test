@@ -1,0 +1,10 @@
+testset/housing.linereg
+testset/servo.linereg
+testset/auto-mpg.linereg
+testset/solarflareC.linereg
+testset/solarflareM.linereg
+testset/solarflareX.linereg
+testset/breastcancer.linereg
+testset/forestfires.linereg
+testset/automobile.linereg
+testset/crime.linereg

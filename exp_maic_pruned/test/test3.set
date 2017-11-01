@@ -1,0 +1,31 @@
+limits/time = 5000
+
+# AIC or BIC
+# [type: char, range: {a,b}, default: a]
+linereg/mode = a
+
+# parameter to control the number of selected explanatory variables
+# [type: int, range: [-1,100], default:-1]
+linereg/ubnumex = -1
+
+# parameter to control branching rules
+# [type: char, range: {a,s,m}, default:a]
+linereg/bmode = a
+
+# parameter for my branching rules
+# [type: int, default: 200000]
+# [type: int, default: 100000]
+#branching/frequent/priority = 200000
+#branching/fullstrong_maic/priority = 100000
+branching/frequent/priority = 100000
+branching/fullstrong_maic/priority = 200000
+
+# parameter for nodeselection
+nodeselection/restartdfs/stdpriority = 300000
+#nodeselection/bfs/stdpriority = 300000
+
+# parameter for my heuristics
+heuristics/forward/freq = 1
+heuristics/forward/maxdepth = 10
+heuristics/backward/freq = 1
+heuristics/backward/maxdepth = 10
