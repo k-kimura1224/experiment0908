@@ -16,3 +16,4 @@ test_mac/
 !settings/
 gmon.out
 settings/no_presolve.set
+!*.log
