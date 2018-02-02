@@ -220,6 +220,16 @@ SCIP_RETCODE solveSubproblem(
    /* update lower bound */
    SCIP_CALL( SCIPupdateLocalLowerbound(scip, dualbound));
 
+   /******/
+   {
+      if( dualbound >= SCIPgetSolOrigObj(scip, SCIPgetBestSol(scip) ) )
+      {
+         printf("[%f] Cut-off by relaxator\n", dualbound);
+      }
+   }
+   /******/
+
+
    /* get the number of stored solutions */
    nsols = SCIPgetNSols(scip);
    if( nsols < maxsols )
@@ -651,6 +661,15 @@ SCIP_DECL_RELAXEXEC(relaxExecDposv)
                parentdual = SCIPgetNodeLowerbound(scip, parent);
                /* update */
                SCIP_CALL( SCIPupdateLocalLowerbound(scip, parentdual + para_regterm));
+				   /******/
+				   {
+				      if( parentdual + para_regterm >= SCIPgetSolOrigObj(scip, SCIPgetBestSol(scip) ) )
+				      {
+				         printf("[%f] Cut-off by relaxator\n", parentdual + para_regterm);
+				      }
+				   }
+				   /******/
+
             }
 
 #if RELAX_TIMELOG
@@ -672,6 +691,14 @@ SCIP_DECL_RELAXEXEC(relaxExecDposv)
       parentdual = SCIPgetNodeLowerbound(scip, parent);
       /* update */
       SCIP_CALL( SCIPupdateLocalLowerbound(scip, parentdual + para_regterm));
+	   /******/
+	   {
+	      if( parentdual + para_regterm >= SCIPgetSolOrigObj(scip, SCIPgetBestSol(scip) ) )
+	      {
+	         printf("[%f] Cut-off by relaxator\n", parentdual + para_regterm);
+	      }
+	   }
+	   /******/
 
 #if RELAX_TIMELOG
       end = clock();

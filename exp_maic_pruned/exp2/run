@@ -1,0 +1,17 @@
+#!/bin/sh
+#chmod u+x run.sh 
+run()
+{
+	DATANAME=$1
+	echo "running .. [DATA:$1]"
+	../bin/scip -f ../../data/${DATANAME}.linereg -s ../settings/exp2.set > ${DATANAME}.log
+}
+
+rm -rf *log
+
+run spiked_10mg
+run spiked_20mg
+run spiked_40mg
+run spiked_80mg
+run spiked_160mg
+
